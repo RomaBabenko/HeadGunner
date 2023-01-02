@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
     private float nextFire = 0.0F;
     public Animator anim;
     public ParticleSystem muzzleFlash;
+    public AudioSource audioSource;
 
     void Update()
     {
@@ -17,6 +18,7 @@ public class Weapon : MonoBehaviour
             Shoot();
             anim.SetBool("rifle", true);
             muzzleFlash.Play();
+            audioSource.Play();
         }
         else if(Input.GetButtonUp("Fire1"))
         {

@@ -6,8 +6,10 @@ public class DeathZombie : MonoBehaviour
     private Score score;
     private MoneyGame moneyGame;
     public GameObject deathZombie;
+    public AudioSource audioSource;
+    public GameObject zombie;
 
-     void Start()
+    void Start()
     {
         score = FindObjectOfType<Score>();
         moneyGame = FindObjectOfType<MoneyGame>();
@@ -16,8 +18,9 @@ public class DeathZombie : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        audioSource.Play();
 
-        if(health <= 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
             score.Kill();

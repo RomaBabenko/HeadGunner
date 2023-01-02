@@ -9,6 +9,12 @@ public class WeaponPlayer3 : MonoBehaviour
     public float fireRate = 0.5F;
     private float nextFire = 0.0F;
     public Animator anim;
+    public AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = firePoint.GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -16,6 +22,7 @@ public class WeaponPlayer3 : MonoBehaviour
         {
             Shoot();
             anim.SetBool("rifle", true);
+            audioSource.Play();
         }
         else if (Input.GetButtonUp("Fire1"))
         {
@@ -28,6 +35,5 @@ public class WeaponPlayer3 : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rigidbody2D = bullet.GetComponent<Rigidbody2D>();
         rigidbody2D.AddForce(firePoint.up, ForceMode2D.Impulse);
-
     }
 }
